@@ -52,7 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Auditable.cs" />
-    <Compile Include="Models\Footer.cs" />
+    <Compile Include="Models\Country.cs" />
+    <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\IAuditable.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuGroup.cs" />

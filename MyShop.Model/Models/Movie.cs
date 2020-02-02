@@ -8,13 +8,19 @@ using System.Threading.Tasks;
 
 namespace MyShop.Model.Models
 {
-    [Table ("Footers")]
-    public class Footer
+    [Table ("Movies")]
+    public class Movie
     {
         [Key]
         public string ID { set; get; }
         [Required]
-        public string Content { set; get; }
+        [MaxLength(250)]
+        [Column(TypeName ="nvarchar")]
+        public string Name { set; get; }
+        [MaxLength(50)]
+        public string CountryID { set; get; }
+        [ForeignKey("CountryID")]
+        public virtual Country Country { set; get; }
 
     }
 }

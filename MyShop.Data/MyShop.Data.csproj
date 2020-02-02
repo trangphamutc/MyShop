@@ -51,6 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infarstructure\IRepositoty.cs" />
+    <Compile Include="Infarstructure\Repository.cs" />
+    <Compile Include="Migrations\202002021905038_InitialDB.cs" />
+    <Compile Include="Migrations\202002021905038_InitialDB.designer.cs">
+      <DependentUpon>202002021905038_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="MovieDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +70,15 @@
       <Project>{95659c9a-ccd5-4e3a-9809-a5d8ebc78fc0}</Project>
       <Name>MyShop.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MyShop.Model\MyShop.Model.csproj">
+      <Project>{be84d428-0e04-4015-b03a-91750cdc3a37}</Project>
+      <Name>MyShop.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202002021905038_InitialDB.resx">
+      <DependentUpon>202002021905038_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
