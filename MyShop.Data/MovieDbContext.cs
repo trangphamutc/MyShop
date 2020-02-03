@@ -11,7 +11,7 @@ namespace MyShop.Data
     {
         public MovieDbContext() : base("MovieStoreConnection")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
         }
         public DbSet<Movie> Movies { set; get; }
         public DbSet<Country> Countries { set; get; }

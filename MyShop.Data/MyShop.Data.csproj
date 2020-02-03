@@ -51,8 +51,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infarstructure\CountryRepository.cs" />
+    <Compile Include="Infarstructure\ICountryRepository.cs" />
+    <Compile Include="Infarstructure\IMovieRepository.cs" />
     <Compile Include="Infarstructure\IRepositoty.cs" />
+    <Compile Include="Infarstructure\IUnitOfWork.cs" />
+    <Compile Include="Infarstructure\MovieRepository.cs" />
     <Compile Include="Infarstructure\Repository.cs" />
+    <Compile Include="Infarstructure\UnitOfWork.cs" />
     <Compile Include="Migrations\202002021905038_InitialDB.cs" />
     <Compile Include="Migrations\202002021905038_InitialDB.designer.cs">
       <DependentUpon>202002021905038_InitialDB.cs</DependentUpon>

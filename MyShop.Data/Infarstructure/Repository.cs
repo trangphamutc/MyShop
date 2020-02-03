@@ -10,19 +10,24 @@ namespace MyShop.Data.Infarstructure
 {
     public class Repository<TEntity> : IRepositoty<TEntity> where TEntity : class
     {
-        protected readonly DbContext Context;
+        protected readonly DbContext MovieDbContext;
+        protected readonly IDbSet<TEntity> dbSet;
         public Repository(DbContext context)
         {
-            Context = context;
+            MovieDbContext = context;
         }
         public void Add(TEntity entity)
         {
-            Context.Set<TEntity>().Add(entity);
+            MovieDbContext.Set<TEntity>().Add(entity);
         }
-
+        public void Remove(int id)
+        {
+            MovieDbContext.Set<TEntity>().Remove(MovieDbContext.Set<TEntity>().Find(id));
+        }
+        
         public void AddRange(IEnumerable<TEntity> entities)
         {
-            Context.Set<TEntity>().AddRange(entities);
+            MovieDbContext.Set<TEntity>().AddRange(entities);
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
@@ -32,22 +37,27 @@ namespace MyShop.Data.Infarstructure
 
         public TEntity Get(int id)
         {
-            return Context.Set<TEntity>().Find(id);
+            return MovieDbContext.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return Context.Set<TEntity>().ToList();
+            return MovieDbContext.Set<TEntity>().ToList();
         }
 
         public void Remove(TEntity entity)
         {
-            Context.Set<TEntity>().Remove(entity);
+            MovieDbContext.Set<TEntity>().Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
-            Context.Set<TEntity>().RemoveRange(entities);
+            MovieDbContext.Set<TEntity>().RemoveRange(entities);
+        }
+
+        public void Update(TEntity entity)
+        {
+            dbSet.Attach(entity);
         }
     }
 }
