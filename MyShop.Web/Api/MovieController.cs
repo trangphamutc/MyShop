@@ -1,10 +1,13 @@
 ﻿using MyShop.Model.Models;
 using MyShop.Web.Infrastructure.Core;
+using MyShop.Web.Models;
 using MyShopService;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using MyShop.Web.Infrastructure.Extentions;
+using AutoMapper;
 
 namespace MyShop.Web.Api
 {
@@ -18,7 +21,8 @@ namespace MyShop.Web.Api
         {
             this._movieService = movieService;
         }
-        public HttpResponseMessage Post( HttpRequestMessage request, Movie movie)
+        [Route("add")]
+        public HttpResponseMessage Post( HttpRequestMessage request, MovieViewModel movieVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -28,7 +32,9 @@ namespace MyShop.Web.Api
                     request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
                 }
                 else {
-                    var MovieCop = _movieService.Add(movie);
+                    Movie newMovie = new Movie();
+                    newMovie.UpdateMovie(movieVm);
+                    var movie = _movieService.Add(newMovie);
                     _movieService.Save();
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
@@ -54,7 +60,8 @@ namespace MyShop.Web.Api
                 return response;
             });
         }
-        public HttpResponseMessage Put(HttpRequestMessage request, Movie movie)
+        [Route("update")]
+        public HttpResponseMessage Put(HttpRequestMessage request, MovieViewModel movieVm)
         {
             return CreateHttpResponse(request, () =>
             {
@@ -65,8 +72,11 @@ namespace MyShop.Web.Api
                 }
                 else
                 {
-                    _movieService.Update(movie);
+                    var movieDb = _movieService.GetById(movieVm.ID);
+                    movieDb.UpdateMovie(movieVm);
+                    _movieService.Update(movieDb);
                     _movieService.Save();
+
                     response = request.CreateResponse(HttpStatusCode.OK);
                 }
                 return response;
@@ -77,17 +87,12 @@ namespace MyShop.Web.Api
         public HttpResponseMessage Get(HttpRequestMessage request)
         {
             return CreateHttpResponse(request, () =>{
-                HttpResponseMessage response = null;
-                if (ModelState.IsValid)
-                {
-                    request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-                else
-                {
-                    var listMovie = _movieService.GetAll();
+                 
+                var listMovie = _movieService.GetAll();
+                var listMovieVm = Mapper.Map<List<MovieViewModel>>(listMovie);
 
-                    response = request.CreateResponse(HttpStatusCode.OK, listMovie);
-                }
+                HttpResponseMessage response = request.CreateResponse(HttpStatusCode.OK, listMovieVm);
+               
                 return response;
             });
         }

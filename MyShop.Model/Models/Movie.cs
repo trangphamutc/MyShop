@@ -12,7 +12,8 @@ namespace MyShop.Model.Models
     public class Movie
     {
         [Key]
-        public string ID { set; get; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
         [Required]
         [MaxLength(250)]
         [Column(TypeName ="nvarchar")]

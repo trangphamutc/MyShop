@@ -68,6 +68,10 @@
     <Compile Include="Migrations\202002041614511_addErrorTable.designer.cs">
       <DependentUpon>202002041614511_addErrorTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002051728458_updateMovie.cs" />
+    <Compile Include="Migrations\202002051728458_updateMovie.designer.cs">
+      <DependentUpon>202002051728458_updateMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MovieDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202002041614511_addErrorTable.resx">
       <DependentUpon>202002041614511_addErrorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002051728458_updateMovie.resx">
+      <DependentUpon>202002051728458_updateMovie.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

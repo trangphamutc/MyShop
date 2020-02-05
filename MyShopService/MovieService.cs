@@ -11,12 +11,12 @@ namespace MyShopService
     {
         Movie Add(Movie movie);
         void Update(Movie movie);
-        void GetById(int id);
+        Movie GetById(int id);
         void Delete(int id);
         void Save();
         IEnumerable<Movie> GetAll();
     }
-    class MovieService : IMovieService
+    public class MovieService : IMovieService
     {
         IMovieRepository _movieRepository;
         IUnitOfWork _unitOfWork;
@@ -29,9 +29,9 @@ namespace MyShopService
         {
             return _movieRepository.Add(movie);
         }
-        public void GetById(int id)
+        public Movie GetById(int id)
         {
-            throw new NotImplementedException();
+            return _movieRepository.Get(id);
         }
 
         public void Update(Movie movie)

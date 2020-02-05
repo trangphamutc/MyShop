@@ -25,6 +25,8 @@ namespace MyShop.Data.Infarstructure
                 .ToList();
         }
 
+        
+
         public MovieDbContext MovieDbContext
         {
             get

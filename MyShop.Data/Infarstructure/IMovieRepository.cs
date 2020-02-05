@@ -10,6 +10,6 @@ namespace MyShop.Data.Infarstructure
     public interface IMovieRepository:IRepositoty<Movie>
     {
         IEnumerable<Movie> GetMoviesWithCountry(int pageIndex, int pageSize, string coutryID);
-        void Remove(int id);
+        
     }
 }
