@@ -16,9 +16,9 @@ namespace MyShop.Data.Infarstructure
         {
             MovieDbContext = context;
         }
-        public void Add(TEntity entity)
+        public TEntity Add(TEntity entity)
         {
-            MovieDbContext.Set<TEntity>().Add(entity);
+            return MovieDbContext.Set<TEntity>().Add(entity);
         }
         public void Remove(int id)
         {

@@ -9,10 +9,12 @@ namespace MyShopService
 {
     public interface IMovieService
     {
-        void Add(Movie movie);
+        Movie Add(Movie movie);
         void Update(Movie movie);
         void GetById(int id);
         void Delete(int id);
+        void Save();
+        IEnumerable<Movie> GetAll();
     }
     class MovieService : IMovieService
     {
@@ -23,9 +25,9 @@ namespace MyShopService
             this._movieRepository = movieRepository;
             this._unitOfWork = unitOfWork;
         }
-        public void Add(Movie movie)
+        public Movie Add(Movie movie)
         {
-            _movieRepository.Add(movie);
+            return _movieRepository.Add(movie);
         }
         public void GetById(int id)
         {
@@ -40,6 +42,14 @@ namespace MyShopService
         public void Delete(int id)
         {
             _movieRepository.Remove(id);
+        }
+        public void Save()
+        {
+            _unitOfWork.Complete();
+        }
+        public IEnumerable<Movie> GetAll()
+        {
+            return _movieRepository.GetAll();
         }
     }
 }

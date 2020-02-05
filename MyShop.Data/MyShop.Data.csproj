@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infarstructure\CountryRepository.cs" />
+    <Compile Include="Infarstructure\ErrorRepository.cs" />
     <Compile Include="Infarstructure\ICountryRepository.cs" />
     <Compile Include="Infarstructure\IMovieRepository.cs" />
     <Compile Include="Infarstructure\IRepositoty.cs" />
@@ -62,6 +63,10 @@
     <Compile Include="Migrations\202002021905038_InitialDB.cs" />
     <Compile Include="Migrations\202002021905038_InitialDB.designer.cs">
       <DependentUpon>202002021905038_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002041614511_addErrorTable.cs" />
+    <Compile Include="Migrations\202002041614511_addErrorTable.designer.cs">
+      <DependentUpon>202002041614511_addErrorTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MovieDbContext.cs" />
@@ -84,6 +89,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002021905038_InitialDB.resx">
       <DependentUpon>202002021905038_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002041614511_addErrorTable.resx">
+      <DependentUpon>202002041614511_addErrorTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
